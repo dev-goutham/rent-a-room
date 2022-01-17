@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    env_file:
+      - ./.env.local
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=rent-a-room-db
+    volumes:
+      - rent-a-room-db:/data/db
+  nextjs:
+    build: .
+    env_file:
+      - ./.env.local
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/app/
+
+volumes:
+  rent-a-room-db:
