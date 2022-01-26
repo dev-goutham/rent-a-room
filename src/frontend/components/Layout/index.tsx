@@ -4,7 +4,7 @@ import Navbar from "../Navbar"
 const Layout: React.FC = ({ children }) => {
   return (
     <div>
-      <header>
+      <header className="relative mb-12">
         <Navbar isAuthenticated={true} />
       </header>
       <main>{children}</main>

@@ -23,7 +23,7 @@ const Navbar: React.FC<Props> = ({ isAuthenticated }) => {
   const imageAlt = "image"
 
   return (
-    <nav className="relative flex justify-between px-2 py-2 align-middle shadow-md lg:px-6">
+    <nav className="fixed top-0 left-0 right-0 flex justify-between px-2 py-2 align-middle bg-white shadow-md lg:px-6">
       <div className="flex items-center gap-4 align-middle lg:flex-1">
         <Logo />
         <SearchBar handleSubmit={search} />
