@@ -8,7 +8,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "hero-pattern": "url('/images/world.svg')",
+      },
+    },
     colors: {
       ...colors,
       blue: {

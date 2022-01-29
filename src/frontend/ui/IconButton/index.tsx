@@ -12,7 +12,7 @@ type Props = React.DetailedHTMLProps<
 const IconButton: React.FC<Props> = ({ children, Icon, variant }) => {
   return (
     <button
-      className={`px-4 py-2 leading-none flex gap-2 rounded-md ${
+      className={`px-4 py-2 leading-none ease-in duration-200 flex gap-2 rounded-md ${
         variant === "fill"
           ? "bg-blue-500 text-slate-50 hover:bg-blue-600"
           : variant === "outline"

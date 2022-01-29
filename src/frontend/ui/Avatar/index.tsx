@@ -28,7 +28,7 @@ const Avatar: React.FC<Props> = ({ imageUrl, imageAlt }) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-50 w-auto origin-top-right border-2 divide-y rounded-lg shadow-lg border-slate-100 divide-slate-100">
+        <Menu.Items className="absolute right-0 z-50 w-auto origin-top-right bg-white border-2 divide-y rounded-lg shadow-lg border-slate-100 divide-slate-100">
           <Menu.Item>
             <button className="inline-flex items-center justify-center w-full gap-2 p-2 ease-in rounded-t-lg hover:bg-slate-200 hover:text-slate-900 text-slate-700">
               <BiUserCircle />
