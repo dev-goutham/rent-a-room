@@ -2,7 +2,6 @@ import React from "react"
 import { AiFillHome } from "react-icons/ai"
 
 import Logo from "@frontend/ui/Logo"
-import SearchBar from "@frontend/ui/SearchBar"
 import Button from "@frontend/ui/Button"
 import IconButton from "@frontend/ui/IconButton"
 import Avatar from "@frontend/ui/Avatar"
