@@ -8,7 +8,7 @@ const Layout: React.FC = ({ children }) => {
       <header className="relative mb-20">
         <Navbar isAuthenticated={true} />
       </header>
-      <main>
+      <main className="mb-20">
         <Container>{children}</Container>
       </main>
     </div>
