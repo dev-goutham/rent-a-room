@@ -16,9 +16,9 @@
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
-      "@/frontend/*": ["frontend/*"],
-      "@/backend/*": ["backend/*"],
-      "@/common/*": ["common/*"]
+      "@frontend/*": ["frontend/*"],
+      "@backend/*": ["backend/*"],
+      "@common/*": ["common/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
