@@ -1,16 +1,6 @@
-import ListingCard from "@frontend/components/ListingCard"
+import ListingCardsGrid from "@frontend/components/ListingCardsGrid"
 import Section from "@frontend/ui/Section"
-import Link from "next/link"
 import React from "react"
-
-interface IListing {
-  id: string
-  title: string
-  address: string
-  price: number
-  numberOfGuests: number
-  imageUrl: string
-}
 
 const listings: IListing[] = [
   {
@@ -54,17 +44,7 @@ const listings: IListing[] = [
 const PremiumListings: React.FC = () => {
   return (
     <Section>
-      <div className="flex justify-center">
-        <div className="grid  gap-4 grid-cols-[320px] md:grid-cols-[320px_320px] lg:grid-cols-[320px_320px_320px_320px]">
-          {listings.map((l) => (
-            <Link key={l.id} href={`/listing/${l.id}`}>
-              <a>
-                <ListingCard {...l} />
-              </a>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <ListingCardsGrid listings={listings} />
     </Section>
   )
 }
