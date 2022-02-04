@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react"
 import Sort from "."
 
 export default {
-  title: "Components/Sort",
+  title: "UI/Sort",
   component: Sort,
 } as ComponentMeta<typeof Sort>
 
