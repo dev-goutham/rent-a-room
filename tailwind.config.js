@@ -8,6 +8,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      display: ["Sacramento"],
+    },
     extend: {
       backgroundImage: {
         "hero-pattern": "url('/images/world.svg')",

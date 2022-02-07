@@ -5,9 +5,10 @@ type Props = React.DetailedHTMLProps<
   HTMLButtonElement
 > & {
   variant: "fill" | "transparant" | "outline"
+  isDisabled?: boolean
 }
 
-const LinkButton: React.FC<Props> = ({ children, variant }) => {
+const Button: React.FC<Props> = ({ children, variant, isDisabled }) => {
   return (
     <button
       className={`px-4 py-2 leading-none  ease-in duration-300 rounded-md ${
@@ -16,11 +17,13 @@ const LinkButton: React.FC<Props> = ({ children, variant }) => {
           : variant === "outline"
           ? "border-2 border-blue-500 text-inherit hover:border-blue-600"
           : "bg-transparent text-inherit hover:text-opacity-80 hover:underline hover:underline-offset-4"
-      }`}
+      }
+        ${isDisabled ? "pointer-events-none opacity-30" : ""}
+      `}
     >
       {children}
     </button>
   )
 }
 
-export default LinkButton
+export default Button

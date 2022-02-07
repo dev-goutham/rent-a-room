@@ -11,6 +11,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "2",
@@ -20,6 +29,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "3",
@@ -29,6 +47,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "4",
@@ -38,6 +65,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
 ]
 
