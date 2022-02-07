@@ -14,10 +14,12 @@ const HeroArea: React.FC = () => {
         <h1 className="mb-6 text-2xl font-bold text-blue-800">
           Find rooms in places you want to visit
         </h1>
-        <div className="mb-4">
+        <div className="mb-8">
           <SearchBar handleSubmit={search} />
         </div>
-        <HeroImageGrid />
+        <div className="flex justify-center">
+          <HeroImageGrid />
+        </div>
       </div>
     </Section>
   )

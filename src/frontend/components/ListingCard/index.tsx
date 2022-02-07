@@ -18,7 +18,7 @@ const ListingCard: React.FC<Props> = ({
   numberOfGuests,
 }) => {
   return (
-    <div className="relative w-full border-2 rounded-sm border-slate-200">
+    <div className="relative border-2 rounded-sm border-slate-200">
       <Image src={imageUrl} alt={title} height={195} width={320} />
       <div className="px-6 py-2">
         <p className="my-2 text-xl font-semibold text-blue-700">

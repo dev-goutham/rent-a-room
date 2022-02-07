@@ -1,16 +1,6 @@
-import ListingCard from "@frontend/components/ListingCard"
+import ListingCardsGrid from "@frontend/components/ListingCardsGrid"
 import Section from "@frontend/ui/Section"
-import Link from "next/link"
 import React from "react"
-
-interface IListing {
-  id: string
-  title: string
-  address: string
-  price: number
-  numberOfGuests: number
-  imageUrl: string
-}
 
 const listings: IListing[] = [
   {
@@ -21,6 +11,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "2",
@@ -30,6 +29,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "3",
@@ -39,6 +47,15 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "4",
@@ -48,23 +65,22 @@ const listings: IListing[] = [
     title: "Chic downtown condo",
     numberOfGuests: 4,
     price: 200,
+    city: "Toronto",
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
 ]
 
 const PremiumListings: React.FC = () => {
   return (
     <Section>
-      <div className="flex justify-center">
-        <div className="grid  gap-4 grid-cols-[320px] md:grid-cols-[320px_320px] lg:grid-cols-[320px_320px_320px_320px]">
-          {listings.map((l) => (
-            <Link key={l.id} href={`/listing/${l.id}`}>
-              <a>
-                <ListingCard {...l} />
-              </a>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <ListingCardsGrid listings={listings} />
     </Section>
   )
 }
