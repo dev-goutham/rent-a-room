@@ -12,7 +12,16 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "2",
@@ -21,7 +30,16 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "3",
@@ -30,17 +48,18 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
-  {
-    id: "4",
-    imageUrl:
-      "https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    address: "20 Overlook St, Toronto, ON, CA",
-    title: "Chic downtown condo",
-    numberOfGuests: 4,
-    price: 200,
-  },
+
   {
     id: "5",
     imageUrl:
@@ -48,7 +67,16 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "6",
@@ -57,7 +85,16 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "7",
@@ -66,7 +103,16 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
   {
     id: "8",
@@ -75,7 +121,16 @@ const listingsArr: IListing[] = [
     address: "20 Overlook St, Toronto, ON, CA",
     title: "Chic downtown condo",
     numberOfGuests: 4,
+    city: "Toronto",
     price: 200,
+    host: {
+      username: "Goutham",
+      avatarUrl:
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    type: "apartment",
+    description:
+      "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
   },
 ]
 

@@ -1,8 +1,8 @@
 import Button from "@frontend/ui/Button"
 import React, { useState } from "react"
-import DatePicker from "../DatePicker"
+import DatePicker from "../../components/DatePicker"
 
-const BookListingCta: React.FC<{ price: number }> = ({ price }) => {
+const BookListing: React.FC<{ price: number }> = ({ price }) => {
   const [checkInDate, setCheckInDate] = useState<Date | null>(null)
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(null)
 
@@ -10,8 +10,8 @@ const BookListingCta: React.FC<{ price: number }> = ({ price }) => {
     <div className="self-start h-auto px-8 mx-auto text-center border-[1px] max-w-[350px] md:max-w-[400px] w-[350px] md:w-[400px]  border-slate-300">
       <div className=" divide-y-[1px] divide-slate-200">
         <div className="py-8 tracking-wider">
-          <span className="text-4xl font-semibold text-blue-800">${price}</span>
-          <span className="text-2xl text-slate-300">/day</span>
+          <span className="text-3xl font-semibold text-blue-800">${price}</span>
+          <span className="text-3xl text-slate-300">/day</span>
         </div>
         <div>
           <div className="py-4">
@@ -47,4 +47,4 @@ const BookListingCta: React.FC<{ price: number }> = ({ price }) => {
   )
 }
 
-export default BookListingCta
+export default BookListing
