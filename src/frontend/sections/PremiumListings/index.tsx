@@ -80,6 +80,9 @@ const listings: IListing[] = [
 const PremiumListings: React.FC = () => {
   return (
     <Section>
+      <h3 className="mb-3 text-4xl font-semibold text-center text-blue-800">
+        Premium Listings
+      </h3>
       <ListingCardsGrid listings={listings} />
     </Section>
   )

@@ -46,7 +46,7 @@ const ListingDetails: React.FC<{
       </div>
       <h3 className="mb-6 text-3xl font-semibold text-blue-800">{title}</h3>
       <Link href={`/user/${1}`}>
-        <a className="flex items-center gap-4 py-4 mb-4 leading-none border-t-2 border-b-2 border-slate-200">
+        <a className="flex items-center gap-4 py-6 mb-4 leading-none border-t-[1px] border-b-[1px] border-slate-300">
           <img
             src={host.avatarUrl}
             alt={host.username}
@@ -66,7 +66,7 @@ const ListingDetails: React.FC<{
           <Tag>{numberOfGuests} guests</Tag>
         </div>
       </div>
-      <div className="mt-2">
+      <div className="mb-4">
         <p>{description}</p>
       </div>
     </div>

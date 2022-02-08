@@ -7,7 +7,7 @@ const CTA: React.FC = () => {
   return (
     <Section>
       <div className="mx-auto text-center">
-        <h4 className="mb-4 text-3xl font-semibold text-lightBlue-800">
+        <h4 className="mb-4 text-3xl font-semibold text-blue-800">
           Rent a room for your next holiday
         </h4>
         <Link href="/listins/united-states">
