@@ -25,7 +25,7 @@ const ListingDetails: React.FC<{
   },
 }) => {
   return (
-    <div>
+    <div className="max-w-[740px]">
       <Image
         src={imageUrl}
         className="block mb-4"

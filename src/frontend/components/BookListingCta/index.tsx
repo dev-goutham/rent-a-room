@@ -7,7 +7,7 @@ const BookListingCta: React.FC<{ price: number }> = ({ price }) => {
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(null)
 
   return (
-    <div className="self-start h-auto px-8 mx-auto text-center border-[1px] max-w-[350px] w-[350px]  border-slate-300">
+    <div className="self-start h-auto px-8 mx-auto text-center border-[1px] max-w-[350px] md:max-w-[400px] w-[350px] md:w-[400px]  border-slate-300">
       <div className=" divide-y-[1px] divide-slate-200">
         <div className="py-8 tracking-wider">
           <span className="text-4xl font-semibold text-blue-800">${price}</span>
