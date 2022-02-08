@@ -11,10 +11,10 @@ const HeroArea: React.FC = () => {
   return (
     <Section>
       <div className="bg-contain bg-no-repeat bg-[url('/images/map-background.jpg')]">
-        <h1 className="mb-6 text-2xl font-bold text-blue-800">
+        <h1 className="mb-6 text-4xl font-bold text-blue-800">
           Find rooms in places you want to visit
         </h1>
-        <div className="mb-8">
+        <div className="mb-8 md:mb-16 lg:mb-20">
           <SearchBar handleSubmit={search} />
         </div>
         <div className="flex justify-center">

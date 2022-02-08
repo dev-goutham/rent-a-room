@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     fontFamily: {
       display: ["Sacramento"],
+      sans: ["Nunito", "sans-serif"],
     },
     extend: {
       backgroundImage: {
