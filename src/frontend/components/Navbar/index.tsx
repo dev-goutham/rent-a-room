@@ -7,16 +7,10 @@ import IconButton from "@frontend/ui/IconButton"
 import Avatar from "@frontend/ui/Avatar"
 import Container from "@frontend/ui/Container"
 import Link from "next/link"
+import useAuth from "@frontend/store/auth"
 
-interface Props {
-  isAuthenticated: boolean
-}
-
-const Navbar: React.FC<Props> = ({ isAuthenticated }) => {
-  //TODO
-  const imageUrl =
-    "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940"
-  const imageAlt = "image"
+const Navbar: React.FC = () => {
+  const { isLoggedIn, user, fetchingUser } = useAuth()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-20 bg-white shadow-md">
@@ -29,23 +23,31 @@ const Navbar: React.FC<Props> = ({ isAuthenticated }) => {
               </a>
             </Link>
           </div>
-          <div className="flex items-center gap-4">
-            {isAuthenticated ? (
-              <>
-                <IconButton variant="fill" Icon={AiFillHome}>
-                  Host
-                </IconButton>
-                <Avatar imageUrl={imageUrl} imageAlt={imageAlt} />
-              </>
-            ) : (
-              <>
-                <a href="/api/auth/google/callback">
-                  <Button variant="fill">Login</Button>
-                </a>
-                <Button variant="outline">Register</Button>
-              </>
-            )}
-          </div>
+          {!fetchingUser && (
+            <div className="flex items-center gap-4">
+              {isLoggedIn && user ? (
+                <>
+                  <IconButton variant="fill" Icon={AiFillHome}>
+                    Host
+                  </IconButton>
+                  <Avatar imageUrl={user.image} imageAlt={user.name} />
+                </>
+              ) : (
+                <>
+                  <Link href="/login">
+                    <a>
+                      <Button variant="fill">Login</Button>
+                    </a>
+                  </Link>
+                  <Link href="/register">
+                    <a>
+                      <Button variant="outline">Register</Button>
+                    </a>
+                  </Link>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </Container>
     </nav>

@@ -1,13 +1,18 @@
-import ListingCardsGrid from "@frontend/components/ListingCardsGrid"
-import Pagination from "@frontend/components/Pagination"
-import Section from "@frontend/ui/Section"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import { Listing, PrismaClient, User } from "@prisma/client"
+
+import ListingCardsGrid from "@frontend/components/ListingCardsGrid"
 
 interface Props {
-  user: IUser
+  user: User
+  listings: Listing[]
+  bookings: Listing[]
 }
+
 const User: NextPage<Props> = ({
-  user: { avatarUrl, username, contact, listings },
+  user: { image, name, email },
+  listings,
+  bookings,
 }) => {
   return (
     <div className="mx-auto max-w-[1328px] pt-12">
@@ -16,8 +21,8 @@ const User: NextPage<Props> = ({
           <div className="divide-y-[1px] divide-slate-300">
             <div className="flex justify-center py-8">
               <img
-                src={avatarUrl}
-                alt={username}
+                src={image}
+                alt={name}
                 className="inline-block object-cover w-24 h-24 rounded-full "
               />
             </div>
@@ -25,66 +30,87 @@ const User: NextPage<Props> = ({
               <h4 className="text-xl font-semibold text-blue-800">Details</h4>
               <p>
                 Name:
-                <span className="ml-2 font-semibold" ml-2>
-                  {username}
-                </span>
+                <span className="ml-2 font-semibold">{name}</span>
               </p>
               <p>
                 Contact:
-                <span className="ml-2 font-semibold">{contact}</span>
+                <span className="ml-2 font-semibold">{email}</span>
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <h2 className="mb-4 text-xl font-semibold text-blue-800">Listings</h2>
-        <ListingCardsGrid listings={listings} />
-      </div>
+      {listings.length > 0 && (
+        <div>
+          <h2 className="mb-4 text-xl font-semibold text-blue-800">Listings</h2>
+          <ListingCardsGrid listings={listings} />
+        </div>
+      )}
+      {bookings.length > 0 && (
+        <div>
+          <h2 className="mb-4 text-xl font-semibold text-blue-800">Listings</h2>
+          <ListingCardsGrid listings={listings} />
+        </div>
+      )}
     </div>
   )
 }
 
 export default User
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const { id } = params as { id: string }
+
+  const prisma = new PrismaClient()
+  const user = await prisma.user.findUnique({
+    where: { id },
+  })
+
+  if (!user) {
+    return {
+      props: {},
+      notFound: true,
+    }
+  }
+
+  const listings = await prisma.listing.findMany({
+    where: {
+      userId: id,
+    },
+  })
+
+  const bookings = await prisma.listing.findMany({
+    where: {
+      Booking: {
+        some: {
+          userId: id,
+        },
+      },
+    },
+  })
+
   return {
     props: {
-      user: {
-        id: "1",
-        username: "Goutham",
-        avatarUrl:
-          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        contact: "dev.gouthamram95@gmail.com",
-        listings: [
-          {
-            id: "1",
-            imageUrl:
-              "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            address: "20 Overlook St, Toronto, ON, CA",
-            title: "Chic downtown condo",
-            numberOfGuests: 4,
-            city: "Toronto",
-            price: 200,
-            host: {
-              username: "Goutham",
-              avatarUrl:
-                "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            },
-            type: "apartment",
-            description:
-              "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
-          },
-        ],
-      },
+      user,
+      listings,
+      bookings,
     },
     revalidate: 1,
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const prisma = new PrismaClient()
+  const users = await prisma.user.findMany()
+
+  const paths = users.map((user) => ({
+    params: {
+      id: user.id,
+    },
+  }))
+
   return {
     fallback: "blocking",
-    paths: [],
+    paths,
   }
 }

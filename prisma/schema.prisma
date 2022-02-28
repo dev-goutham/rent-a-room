@@ -24,6 +24,7 @@ model Listing {
   listingType    ListingType
   User           User?       @relation(fields: [userId], references: [id])
   userId         String?     @db.ObjectId
+  Booking        Booking[]
 
   @@map("listings")
 }
@@ -42,6 +43,19 @@ model User {
   image    String
   listings Listing[]
   walledId String?
+  Booking  Booking[]
 
   @@map("users")
+}
+
+model Booking {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  listing   Listing  @relation(fields: [listingId], references: [id])
+  listingId String   @db.ObjectId
+  from      DateTime
+  to        DateTime
+  tenent    User     @relation(fields: [userId], references: [id])
+  userId    String   @db.ObjectId
+
+  @@map("bookings")
 }

@@ -1,9 +1,10 @@
+import { Listing } from "@prisma/client"
 import Link from "next/link"
 import React from "react"
 import ListingCard from "../ListingCard"
 
 interface Props {
-  listings: IListing[]
+  listings: Listing[]
 }
 
 const ListingCardsGrid: React.FC<Props> = ({ listings }) => {

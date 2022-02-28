@@ -1,6 +1,8 @@
 import React, { Fragment } from "react"
 import { Menu, Transition } from "@headlessui/react"
 import { BiUserCircle, BiLogOutCircle } from "react-icons/bi"
+import Link from "next/link"
+import useAuth from "@frontend/store/auth"
 
 interface Props {
   imageUrl: string
@@ -8,6 +10,8 @@ interface Props {
 }
 
 const Avatar: React.FC<Props> = ({ imageUrl, imageAlt }) => {
+  const { logout, user } = useAuth()
+
   return (
     <Menu as="div" className="relative inline-block">
       <div>
@@ -30,13 +34,18 @@ const Avatar: React.FC<Props> = ({ imageUrl, imageAlt }) => {
       >
         <Menu.Items className="absolute right-0 z-50 w-auto origin-top-right bg-white border-2 divide-y rounded-lg shadow-lg border-slate-100 divide-slate-100">
           <Menu.Item>
-            <button className="inline-flex items-center justify-center w-full gap-2 p-2 ease-in rounded-t-lg hover:bg-slate-200 hover:text-slate-900 text-slate-700">
-              <BiUserCircle />
-              <div className="inline-block w-max">Profile</div>
-            </button>
+            <Link href={`/user/${user!.id}`}>
+              <a className="inline-flex items-center justify-center w-full gap-2 px-4 py-2 ease-in rounded-t-lg hover:bg-slate-200 hover:text-slate-900 text-slate-700">
+                <BiUserCircle />
+                <div className="inline-block w-max">Profile</div>
+              </a>
+            </Link>
           </Menu.Item>
           <Menu.Item>
-            <button className="inline-flex items-center justify-center w-full gap-2 p-2 ease-in rounded-b-lg hover:bg-slate-200 hover:text-slate-900 text-slate-700">
+            <button
+              onClick={logout}
+              className="inline-flex items-center justify-center w-full gap-2 px-4 py-2 ease-in rounded-b-lg hover:bg-slate-200 hover:text-slate-900 text-slate-700"
+            >
               <BiLogOutCircle />
               <div className="inline-block w-max">Log Out</div>
             </button>
