@@ -5,6 +5,7 @@ type Props = React.DetailedHTMLProps<
   HTMLButtonElement
 > & {
   variant: "fill" | "transparant" | "outline"
+  fullSize?: boolean
   isDisabled?: boolean
 }
 
@@ -12,6 +13,7 @@ const Button: React.FC<Props> = ({
   children,
   variant,
   isDisabled,
+  fullSize,
   ...props
 }) => {
   return (
@@ -24,6 +26,7 @@ const Button: React.FC<Props> = ({
           : "bg-transparent text-inherit hover:text-opacity-80 hover:underline hover:underline-offset-4"
       }
         ${isDisabled ? "pointer-events-none opacity-30" : ""}
+        ${fullSize ? "w-full" : "w-auto"}
       `}
       {...props}
     >

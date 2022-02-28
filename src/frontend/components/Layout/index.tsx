@@ -6,7 +6,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div className="text-slate-600">
       <header className="relative mb-20">
-        <Navbar isAuthenticated={false} />
+        <Navbar />
       </header>
       <main className="relative mb-20">
         <Container>{children}</Container>
