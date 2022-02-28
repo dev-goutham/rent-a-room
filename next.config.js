@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["images.pexels.com"],
   },
+  experimental: {
+    esmExternals: false,
+  },
 }
 
 module.exports = nextConfig

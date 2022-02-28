@@ -39,7 +39,9 @@ const Navbar: React.FC<Props> = ({ isAuthenticated }) => {
               </>
             ) : (
               <>
-                <Button variant="fill">Login</Button>
+                <a href="/api/auth/google/callback">
+                  <Button variant="fill">Login</Button>
+                </a>
                 <Button variant="outline">Register</Button>
               </>
             )}

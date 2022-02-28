@@ -8,7 +8,12 @@ type Props = React.DetailedHTMLProps<
   isDisabled?: boolean
 }
 
-const Button: React.FC<Props> = ({ children, variant, isDisabled }) => {
+const Button: React.FC<Props> = ({
+  children,
+  variant,
+  isDisabled,
+  ...props
+}) => {
   return (
     <button
       className={`px-4 py-2 leading-none  ease-in duration-300 rounded-md ${
@@ -20,6 +25,7 @@ const Button: React.FC<Props> = ({ children, variant, isDisabled }) => {
       }
         ${isDisabled ? "pointer-events-none opacity-30" : ""}
       `}
+      {...props}
     >
       {children}
     </button>
