@@ -29,6 +29,7 @@ const DatePicker: React.FC<Props> = ({
         calendarClassName="flex justify-between"
         wrapperClassName={`flex justify-between`}
         customInput={React.createElement(CustomInput)}
+        dateFormat="dd-MM-yyyy"
       />
     </div>
   )
