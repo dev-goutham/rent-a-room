@@ -142,7 +142,7 @@ const AuthProvider: React.FC = ({ children }) => {
     dispatch({
       type: "AUTH_FETCHING",
     })
-    window.open("http://localhost:3000/api/auth/google/callback")
+    window.open("https://rent-a-room.vercel.app/api/auth/google/callback")
     try {
       const {
         data: { user },
