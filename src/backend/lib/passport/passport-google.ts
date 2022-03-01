@@ -1,4 +1,5 @@
 import { Strategy } from "passport-google-oauth20"
+import { BadRequest } from "http-errors"
 import prisma from "../prisma"
 
 const googleStrategy = new Strategy(
@@ -17,23 +18,38 @@ const googleStrategy = new Strategy(
       picture: string
       email: string
     }
-    const user = await prisma.user.upsert({
+
+    const existingUser = await prisma.user.findUnique({
       where: {
         email,
       },
-      create: {
-        email,
-        image: picture,
-        name,
-        googleId: id,
-      },
-      update: {},
     })
-    console.log(
-      "/backend/lib/passport-google/googleStrategy. Upserted the user",
-      { user },
-    )
-    done(null, user)
+
+    if (!existingUser) {
+      const user = await prisma.user.create({
+        data: {
+          email,
+          googleId: id,
+          image: picture,
+          name,
+          income: 0,
+        },
+      })
+      return done(null, {
+        email: user.email,
+        id: user.id,
+      })
+    }
+
+    if (existingUser.googleId === null) {
+      done(null, false)
+      throw new BadRequest(`An account with the email ${email} already exists`)
+    }
+
+    done(null, {
+      email: existingUser.email,
+      id: existingUser.id,
+    })
   },
 )
 

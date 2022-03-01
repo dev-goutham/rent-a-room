@@ -31,12 +31,28 @@ const AuthProvider: React.FC = ({ children }) => {
     dispatch({
       type: "AUTH_FETCHING",
     })
-    axios.get<{ user: IAuthContext["user"] }>("/api/auth/getMe").then((res) => {
-      dispatch({
-        type: "AUTH_SUCCESS",
-        payload: res.data.user,
+
+    axios
+      .get<{ user: IAuthContext["user"] }>("/api/auth/getMe")
+      .then((res) => {
+        dispatch({
+          type: "AUTH_SUCCESS",
+          payload: res.data.user,
+        })
       })
-    })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          dispatch({
+            type: "AUTH_SUCCESS",
+            payload: null,
+          })
+        } else {
+          dispatch({
+            type: "AUTH_ERROR",
+            payload: "Cannot reach auth servers",
+          })
+        }
+      })
   }, [])
 
   const register: IAuthContext["register"] = useCallback(
@@ -154,6 +170,7 @@ const AuthProvider: React.FC = ({ children }) => {
       type: "AUTH_SUCCESS",
       payload: null,
     })
+    window.location.reload()
   }
 
   return (

@@ -4,8 +4,7 @@ import Section from "@frontend/ui/Section"
 import Sort from "@frontend/ui/Sort"
 import { Listing } from "@prisma/client"
 import { GetServerSideProps, NextPage } from "next"
-
-const listingsArr: Listing[] = []
+import prisma from "@backend/lib/prisma"
 
 interface Props {
   listings: Listing[]
@@ -32,14 +31,40 @@ const Listings: NextPage<Props> = ({ listings }) => {
 
 export default Listings
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
-  query,
-}) => {
-  console.log({ query })
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+  // const { city } = params as { city: string }
+
+  // const listings = await prisma.listing.findMany({
+  //   where: {
+  //     city,
+  //   },
+  // })
+  // console.log(listings.length)
+  let listings: Listing[] = []
+  const { city, country } = ctx.query as {
+    city?: string
+    country?: string
+  }
+
+  if (!city && !country) {
+    listings = await prisma.listing.findMany()
+  } else if (city) {
+    listings = await prisma.listing.findMany({
+      where: {
+        city,
+      },
+    })
+  } else if (country) {
+    listings = await prisma.listing.findMany({
+      where: {
+        country,
+      },
+    })
+  }
 
   return {
     props: {
-      listings: listingsArr,
+      listings,
     },
   }
 }

@@ -2,6 +2,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { Listing, PrismaClient, User } from "@prisma/client"
 
 import ListingCardsGrid from "@frontend/components/ListingCardsGrid"
+import Button from "@frontend/ui/Button"
+import { useEffect, useState } from "react"
+import useAuth from "@frontend/store/auth"
 
 interface Props {
   user: User
@@ -9,17 +12,52 @@ interface Props {
   bookings: Listing[]
 }
 
+const StripeSection: React.FC<{ walletId: string | null; income: number }> = ({
+  walletId,
+  income,
+}) => {
+  return (
+    <div className="py-2 space-y-4">
+      {walletId === null ? (
+        <>
+          <h4 className="text-xl font-semibold text-blue-800">
+            Want to become a host and earn money?
+          </h4>
+          <Button variant="fill">Connect With Stripe</Button>
+        </>
+      ) : (
+        <>
+          <p className="text-xl font-semibold">
+            <span className="inline-block">Income earned:</span>
+            <span className="inline-block ml-2 text-blue-800">${income}</span>
+          </p>
+        </>
+      )}
+    </div>
+  )
+}
+
 const User: NextPage<Props> = ({
-  user: { image, name, email },
+  user: { image, name, email, id, walletId, income },
   listings,
   bookings,
 }) => {
+  const [ownsProfile, setOwnsProfile] = useState(false)
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (!user) {
+      return
+    }
+    setOwnsProfile(() => id === user.id)
+  }, [user, id])
+
   return (
     <div className="mx-auto max-w-[1328px] pt-12">
       <div className="flex justify-center">
-        <div className="px-4 border-[1px] border-slate-300 mb-12 w-[390px]">
-          <div className="divide-y-[1px] divide-slate-300">
-            <div className="flex justify-center py-8">
+        <div className="px-4 py-4 border-[1px] border-slate-200 mb-12 w-[390px]">
+          <div className="divide-y-[1px] divide-slate-200">
+            <div className="flex justify-center py-4">
               <img
                 src={image}
                 alt={name}
@@ -37,6 +75,12 @@ const User: NextPage<Props> = ({
                 <span className="ml-2 font-semibold">{email}</span>
               </p>
             </div>
+            {ownsProfile && (
+              <>
+                <hr className="w-[1px]" />
+                <StripeSection walletId={walletId} income={income} />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -58,44 +102,48 @@ const User: NextPage<Props> = ({
 
 export default User
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const { id } = params as { id: string }
+export const getStaticProps: GetStaticProps<Props> = async (req) => {
+  const { id } = req.params as { id: string }
 
   const prisma = new PrismaClient()
-  const user = await prisma.user.findUnique({
-    where: { id },
-  })
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id },
+      include: {
+        listings: true,
+        Booking: true,
+      },
+    })
+    if (!user) {
+      return {
+        props: {},
+        notFound: true,
+      }
+    }
 
-  if (!user) {
+    const bookings = await prisma.listing.findMany({
+      where: {
+        Booking: {
+          some: {
+            userId: id,
+          },
+        },
+      },
+    })
+
+    return {
+      props: {
+        user,
+        listings: user.listings,
+        bookings,
+      },
+      revalidate: 1,
+    }
+  } catch (error) {
     return {
       props: {},
       notFound: true,
     }
-  }
-
-  const listings = await prisma.listing.findMany({
-    where: {
-      userId: id,
-    },
-  })
-
-  const bookings = await prisma.listing.findMany({
-    where: {
-      Booking: {
-        some: {
-          userId: id,
-        },
-      },
-    },
-  })
-
-  return {
-    props: {
-      user,
-      listings,
-      bookings,
-    },
-    revalidate: 1,
   }
 }
 

@@ -2,16 +2,18 @@ import React from "react"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import ListingBookCta from "@frontend/sections/BookListing"
 import ListingDetails from "@frontend/sections/ListingDetails"
+import { PrismaClient, Listing, User } from "@prisma/client"
 
 interface Props {
-  listing: IListing
+  listing: Listing
+  host: User
 }
 
-const Listing: NextPage<Props> = ({ listing }) => {
+const Listing: NextPage<Props> = ({ listing, host }) => {
   return (
     <div className="pt-12 max-w-[1280px] mx-auto">
       <div className="justify-between lg:flex">
-        <ListingDetails listing={listing} />
+        <ListingDetails listing={listing} host={host} />
         <ListingBookCta price={listing.price} />
       </div>
     </div>
@@ -20,34 +22,44 @@ const Listing: NextPage<Props> = ({ listing }) => {
 
 export default Listing
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  return {
-    props: {
-      listing: {
-        id: "1",
-        imageUrl:
-          "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        address: "20 Overlook St, Toronto, ON, CA",
-        title: "Chic downtown condo",
-        numberOfGuests: 4,
-        city: "Toronto",
-        price: 200,
-        host: {
-          username: "Goutham",
-          avatarUrl:
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto:compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        },
-        type: "apartment",
-        description:
-          "Located on a quiet peaceful residential street, this 2 bedroom townhouse is a perfect accommodation for those wishing to enjoy their stay in London without breaking the bank.",
-      },
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const { id } = params as { id: string }
+  const prisma = new PrismaClient()
+  const listing = await prisma.listing.findUnique({
+    where: { id },
+  })
+  if (!listing) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: listing.userId!,
     },
+  })
+  if (!user) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { listing, host: user },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const prisma = new PrismaClient()
+  const listings = await prisma.listing.findMany()
+  const paths = listings.map((l) => ({
+    params: {
+      id: l.id,
+    },
+  }))
   return {
-    paths: [],
+    paths,
     fallback: "blocking",
   }
 }

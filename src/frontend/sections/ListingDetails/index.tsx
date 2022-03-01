@@ -3,20 +3,22 @@ import Image from "next/image"
 import Link from "next/link"
 import { HiLocationMarker } from "react-icons/hi"
 import Tag from "@frontend/ui/Tag"
+import { Listing, User } from "@prisma/client"
 
 const ListingDetails: React.FC<{
-  listing: IListing
+  listing: Listing
+  host: User
 }> = ({
   listing: {
     imageUrl,
     title,
     address,
     city,
-    host,
-    type,
+    listingType,
     numberOfGuests,
     description,
   },
+  host,
 }) => {
   return (
     <div className="max-w-[740px]">
@@ -38,16 +40,16 @@ const ListingDetails: React.FC<{
         </Link>
         <div className="text-sm text-slate-500">{address}</div>
       </div>
-      <h3 className="mb-6 text-3xl font-semibold text-blue-800">{title}</h3>
+      <h3 className="mb-6 text-2xl font-semibold text-blue-800">{title}</h3>
       <Link href={`/user/${1}`}>
         <a className="flex items-center gap-4 py-6 mb-4 leading-none border-t-[1px] border-b-[1px] border-slate-300">
           <img
-            src={host.avatarUrl}
-            alt={host.username}
+            src={host.image}
+            alt={host.name}
             className="inline-block object-cover w-[3.5rem] h-[3.5rem] rounded-full"
           />
           <div className="text-4xl font-semibold tracking-wide capitalize font-display">
-            {host.username}
+            {host.name}
           </div>
         </a>
       </Link>
@@ -56,7 +58,7 @@ const ListingDetails: React.FC<{
           About this space
         </h4>
         <div className="my-1 space-x-2">
-          <Tag>{type}</Tag>
+          <Tag>{listingType}</Tag>
           <Tag>{numberOfGuests} guests</Tag>
         </div>
       </div>

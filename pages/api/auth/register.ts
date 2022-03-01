@@ -41,6 +41,7 @@ const register: ApiHandler = async (req, res) => {
       password: hashedPassword,
       name: username,
       image,
+      income: 0,
     },
   })
   res.redirect("/api/auth/login")

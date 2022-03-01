@@ -13,7 +13,10 @@ const localStrategy = new Strategy(
       if (!user) {
         return done(null, false)
       } else {
-        return done(null, user)
+        return done(null, {
+          email: user.email,
+          id: user.id,
+        })
       }
     } catch (error) {
       done(error)

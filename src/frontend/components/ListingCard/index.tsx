@@ -25,8 +25,12 @@ const ListingCard: React.FC<Props> = ({
           ${price}
           <span className="font-normal text-gray-400 text-md">/day</span>
         </p>
-        <h2 className="text-sm font-semibold text-gray-600">{title}</h2>
-        <address className="mb-4 text-sm text-gray-600">{address}</address>
+        <h2 className="text-sm font-semibold truncate ... text-gray-600">
+          {title}
+        </h2>
+        <address className="mb-4 text-sm truncate ... text-gray-600">
+          {address}
+        </address>
         <div className="flex items-center justify-between leading-none">
           <AiFillHome className="text-blue-500" />
           <div className="flex items-center gap-2">

@@ -4,7 +4,10 @@ import { RequestHandler } from "next-connect"
 type PassportLogin = (user, fn: (error: Error) => void) => void
 
 export type ApiRequest = NextApiRequest & {
-  user?: unknown
+  user?: {
+    email: string
+    id: string
+  }
   login: PassportLogin
   logout: () => void
 }

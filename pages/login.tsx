@@ -48,6 +48,7 @@ const Login: NextPage = () => {
             </label>
             <input
               id="password"
+              type={"password"}
               className="block px-2 py-1 border-[1px] rounded-sm placeholder:text-slate-300 border-slate-300"
               placeholder="password"
             />

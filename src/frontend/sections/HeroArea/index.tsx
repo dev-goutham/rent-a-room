@@ -5,7 +5,7 @@ import React from "react"
 
 const HeroArea: React.FC = () => {
   const search = () => {
-    console.log("searchh")
+    console.log("search")
   }
 
   return (

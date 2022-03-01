@@ -52,6 +52,7 @@ const Register: NextPage = () => {
             </label>
             <input
               id="username"
+              type={"password"}
               className="block px-2 py-1 border-[1px] rounded-sm placeholder:text-slate-300 border-slate-300"
               placeholder="example@gmail.com"
             />
