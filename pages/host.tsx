@@ -1,7 +1,7 @@
 import { ListingType } from "@prisma/client"
 import { NextPage } from "next"
 import { useForm } from "react-hook-form"
-import yup from "yup"
+import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 interface FormFields {

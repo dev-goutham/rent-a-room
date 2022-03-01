@@ -41,7 +41,7 @@ const ListingDetails: React.FC<{
         <div className="text-sm text-slate-500">{address}</div>
       </div>
       <h3 className="mb-6 text-2xl font-semibold text-blue-800">{title}</h3>
-      <Link href={`/user/${1}`}>
+      <Link href={`/user/${host.id}`}>
         <a className="flex items-center gap-4 py-6 mb-4 leading-none border-t-[1px] border-b-[1px] border-slate-300">
           <img
             src={host.image}
