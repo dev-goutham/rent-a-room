@@ -20,16 +20,25 @@ const Index: NextPage<Props> = ({ premiumListings }) => {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const listings = await prisma.listing.findMany({
-    orderBy: {
-      price: "desc",
-    },
-    take: 4,
-  })
-  return {
-    props: {
-      premiumListings: listings,
-    },
+  try {
+    const listings = await prisma.listing.findMany({
+      orderBy: {
+        price: "desc",
+      },
+      take: 4,
+    })
+    return {
+      props: {
+        premiumListings: listings,
+      },
+    }
+  } catch (error) {
+    console.log(error)
+    return {
+      props: {
+        premiumListings: [],
+      },
+    }
   }
 }
 

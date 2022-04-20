@@ -1,51 +1,36 @@
-import { ListingType } from "@prisma/client"
-import { NextPage } from "next"
-import { useForm } from "react-hook-form"
-import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
-
-interface FormFields {
-  listingType: ListingType
-  numberOfGuests: number
-  title: string
-  description: string
-  address: string
-  city: string
-  state: string
-  zipCode: number
-  image: File
-  price: number
-}
-
-const schema = yup.object().shape({
-  listingType: yup
-    .string()
-    .oneOf([ListingType.APARTMENT, ListingType.HOUSE])
-    .required(),
-  address: yup.string().required(),
-  title: yup.string().required(),
-  description: yup.string().required(),
-  city: yup.string().required(),
-  state: yup.string().required(),
-  zipCode: yup.number().required(),
-  price: yup.number().positive().required(),
-  numberOfGuests: yup.number().positive().required(),
-  image: yup.string(),
-})
+import { GetServerSideProps, NextPage } from "next"
+import axios from "axios"
+import HostComponent from "@frontend/sections/Host"
 
 const Host: NextPage = () => {
-  const { register } = useForm<FormFields>({
-    resolver: yupResolver(schema),
-  })
-
-  return (
-    <div className="max-w-[480px] mx-auto">
-      <h2 className="text-2xl font-semibold text-blue-800">
-        Let&apos;s get your place listed
-      </h2>
-      <form></form>
-    </div>
-  )
+  return <HostComponent />
 }
 
 export default Host
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const {
+    data: { user },
+  } = await axios.get<{ user: { id: string } | null }>(
+    `${process.env.NEXT_PUBLIC_WEB_URL}/api/auth/getMe`,
+    {
+      headers: {
+        Cookie: req.headers.cookie || "",
+      },
+    },
+  )
+
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/login",
+        statusCode: 302,
+      },
+      props: {},
+    }
+  }
+
+  return {
+    props: {},
+  }
+}

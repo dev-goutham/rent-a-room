@@ -20,6 +20,7 @@ const Avatar: React.FC<Props> = ({ imageUrl, imageAlt }) => {
             src={imageUrl}
             alt={imageAlt}
             className="inline-block object-cover w-8 h-8 rounded-full"
+            referrerPolicy="no-referrer"
           />
         </Menu.Button>
       </div>

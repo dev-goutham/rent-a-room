@@ -27,9 +27,13 @@ const Navbar: React.FC = () => {
             <div className="flex items-center gap-4">
               {isLoggedIn && user ? (
                 <>
-                  <IconButton variant="fill" Icon={AiFillHome}>
-                    Host
-                  </IconButton>
+                  <Link href="/host">
+                    <a>
+                      <IconButton variant="fill" Icon={AiFillHome}>
+                        Host
+                      </IconButton>
+                    </a>
+                  </Link>
                   <Avatar imageUrl={user.image} imageAlt={user.name} />
                 </>
               ) : (

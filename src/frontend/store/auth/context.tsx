@@ -142,7 +142,17 @@ const AuthProvider: React.FC = ({ children }) => {
     dispatch({
       type: "AUTH_FETCHING",
     })
-    window.open("http://rent-a-room.vercel.app/api/auth/google/callback")
+    if (process.env.NODE_ENV === "development") {
+      window.open(
+        `${process.env.NEXT_PUBLIC_WEB_URL}/api/auth/google/callback`,
+        "_self",
+      )
+    } else {
+      window.open(
+        "http://rent-a-room.vercel.app/api/auth/google/callback",
+        "_self",
+      )
+    }
     try {
       const {
         data: { user },

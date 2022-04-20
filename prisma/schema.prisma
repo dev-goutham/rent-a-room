@@ -17,6 +17,7 @@ model Listing {
   description    String
   country        String
   city           String
+  state          String
   address        String
   price          Int
   numberOfGuests Int
