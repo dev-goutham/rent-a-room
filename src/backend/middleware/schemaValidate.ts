@@ -11,6 +11,7 @@ const schemaValidate =
   async (req, _res, next) => {
     const { error } = schema.validate({ ...req.body }, { allowUnknown: true })
     if (error) {
+      // console.log(JSON.stringify(error))
       throw new BadRequest(message || "Invalid request")
     }
     next()

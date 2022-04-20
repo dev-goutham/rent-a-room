@@ -4,6 +4,7 @@ import passport from "passport"
 import MongoStore from "connect-mongo"
 import "./passport"
 import errorHandlerMiddleware from "../middleware/errorHandlerMiddleware"
+import cookieParser from "cookie-parser"
 
 const sessionStorage = new MongoStore({
   mongoUrl: process.env.DATABASE_URL,
@@ -12,6 +13,7 @@ const sessionStorage = new MongoStore({
 
 const nextConnect = () =>
   nc({ onError: errorHandlerMiddleware })
+    .use(cookieParser())
     .use(
       session({
         secret: "some secret",
