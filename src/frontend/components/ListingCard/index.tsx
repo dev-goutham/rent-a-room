@@ -22,7 +22,7 @@ const ListingCard: React.FC<Props> = ({
       <Image src={imageUrl} alt={title} height={195} width={320} />
       <div className="px-6 py-2">
         <p className="my-2 text-xl font-semibold text-blue-700">
-          ${price}
+          ${price / 100}
           <span className="font-normal text-gray-400 text-md">/day</span>
         </p>
         <h2 className="text-sm font-semibold truncate ... text-gray-600">

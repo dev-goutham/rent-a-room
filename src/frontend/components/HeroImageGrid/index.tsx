@@ -15,7 +15,7 @@ const HeroImageGrid: React.FC = () => {
       <div className="flex justify-center lg:justify-start">
         <div className="grid grid-cols-[350px]  md:grid-cols-[320px_320px] lg:grid-cols-[320px_320px_320px_320px] gap-4">
           {images.map((image) => (
-            <Link key={image.title} href={`/listings?city=${image.title}`}>
+            <Link key={image.title} href={`/listings?location=${image.title}`}>
               <a>
                 <HeroImage
                   imageUrl={image.url}

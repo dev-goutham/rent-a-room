@@ -8,6 +8,7 @@ import Avatar from "@frontend/ui/Avatar"
 import Container from "@frontend/ui/Container"
 import Link from "next/link"
 import useAuth from "@frontend/store/auth"
+import SearchBar from "../SearchBar"
 
 const Navbar: React.FC = () => {
   const { isLoggedIn, user, fetchingUser } = useAuth()
@@ -16,12 +17,15 @@ const Navbar: React.FC = () => {
     <nav className="fixed top-0 left-0 right-0 z-20 bg-white shadow-md">
       <Container>
         <div className="flex justify-between w-full py-3 align-middle">
-          <div className="flex items-center gap-4 align-middle lg:flex-1">
+          <div className="flex items-center gap-4 align-middle ">
             <Link href="/">
               <a>
                 <Logo />
               </a>
             </Link>
+          </div>
+          <div className="md:flex-1 md:ml-6">
+            <SearchBar />
           </div>
           {!fetchingUser && (
             <div className="flex items-center gap-4">
