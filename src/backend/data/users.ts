@@ -9,7 +9,7 @@ const users: User[] = [
     name: "James J.",
     image:
       "https://res.cloudinary.com/tiny-house/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1560648533/mock/users/user-profile-1_mawp12.jpg",
-    email: "james@tinyhouse.com",
+    email: "james@email.com",
     walletId: "acct_************",
     income: 723796,
     //bookings: [],
@@ -26,7 +26,7 @@ const users: User[] = [
     name: "Elizabeth A.",
     image:
       "https://res.cloudinary.com/tiny-house/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1560649052/mock/users/user-profile-2_arwtdy.jpg",
-    email: "elizabeth@tinyhouse.com",
+    email: "elizabeth@email.com",
     walletId: "acct_************",
     income: 256144,
     //bookings: [],
@@ -52,7 +52,7 @@ const users: User[] = [
     name: "Andrew D.",
     image:
       "https://res.cloudinary.com/tiny-house/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1560649280/mock/users/user-profile-3_omxctk.jpg",
-    email: "andrew@tinyhouse.com",
+    email: "andrew@email.com",
     walletId: "acct_************",
     income: 272359,
     //bookings: [],
@@ -76,7 +76,7 @@ const users: User[] = [
     name: "Danielle C.",
     image:
       "https://res.cloudinary.com/tiny-house/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1560650165/mock/users/user-profile-4_wxi6om.jpg",
-    email: "danielle@tinyhouse.com",
+    email: "danielle@email.com",
     walletId: "acct_************",
     income: 465043,
     //bookings: [],
@@ -93,7 +93,7 @@ const users: User[] = [
     name: "Sarah K.",
     image:
       "https://res.cloudinary.com/tiny-house/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1560650436/mock/users/user-profile-5_tm8hhl.jpg",
-    email: "sarah@tinyhouse.com",
+    email: "sarah@email.com",
     walletId: "acct_************",
     income: 104347,
     //bookings: [],

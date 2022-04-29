@@ -6,6 +6,7 @@ import { ListingType } from "@prisma/client"
 import * as joi from "joi"
 import prisma from "@backend/lib/prisma"
 import uploadImage from "@backend/utils/uploadImage"
+import hasWallet from "@backend/middleware/hasWallet"
 
 type Schema = {
   listingType: ListingType
@@ -73,5 +74,6 @@ const createListing: ApiHandler = async (req, res) => {
 
 export default nextConnect()
   .use(isAuthenticated)
+  .use(hasWallet)
   .use(schemaValidate(schema))
   .post(createListing)

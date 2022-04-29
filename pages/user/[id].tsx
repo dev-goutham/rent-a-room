@@ -23,12 +23,21 @@ const StripeSection: React.FC<{ walletId: string | null; income: number }> = ({
           <h4 className="text-xl font-semibold text-blue-800">
             Want to become a host and earn money?
           </h4>
-          <Button variant="fill">Connect With Stripe</Button>
+          <Button
+            onClick={() => {
+              window.open(
+                `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_STRIPE_CLIENT_ID}&scope=read_write`,
+              )
+            }}
+            variant="fill"
+          >
+            Connect With Stripe
+          </Button>
         </>
       ) : (
         <>
           <p className="text-xl font-semibold">
-            <span className="inline-block">Income earned:</span>
+            <span className="inline-block">Income earned: </span>
             <span className="inline-block ml-2 text-blue-800">${income}</span>
           </p>
         </>
