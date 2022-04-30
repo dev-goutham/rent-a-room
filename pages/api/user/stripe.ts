@@ -17,7 +17,6 @@ const addStripeDetails: ApiHandler = async (req, res) => {
     }
 
     const { stripe_user_id } = await stripeConnect(code)
-    console.log(stripe_user_id)
     const { walletId } = await prisma.user.update({
       where: {
         id: req.user!.id,
@@ -29,11 +28,9 @@ const addStripeDetails: ApiHandler = async (req, res) => {
         walletId: true,
       },
     })
-    console.log({ walletId })
     if (!walletId) {
       throw new InternalServerError(`Could not update stripe information`)
     }
-    console.log("sending response")
     res.json({
       walletId,
     })
