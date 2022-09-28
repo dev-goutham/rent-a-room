@@ -30,6 +30,7 @@ const DatePicker: React.FC<Props> = ({
         wrapperClassName={`flex justify-between`}
         customInput={React.createElement(CustomInput)}
         dateFormat="dd-MM-yyyy"
+        excludeDates={[]}
       />
     </div>
   )

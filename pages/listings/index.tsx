@@ -25,7 +25,7 @@ const Listings: NextPage<Props> = ({
 
   useGetListingsUrl()
 
-  const numberOfPages = Math.ceil(totalCount / 4)
+  const numberOfPages = Math.ceil(totalCount / 8)
 
   return (
     <Section>
@@ -71,8 +71,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   console.log({ sort })
 
   const listingsQuery: Prisma.ListingFindManyArgs = {
-    take: 4,
-    skip: (page - 1) * 4,
+    take: 8,
+    skip: (page - 1) * 8,
   }
 
   const listingsCountQuery: Prisma.ListingCountArgs = {}

@@ -20,6 +20,7 @@ type Schema = {
   image: string
   price: number
   country: string
+  walletId?: string
 }
 
 const schema = joi.object<Schema>({
@@ -37,6 +38,7 @@ const schema = joi.object<Schema>({
   price: joi.number().min(1).required(),
   state: joi.string().required(),
   zipCode: joi.string().required(),
+  walletId: joi.string(),
 })
 
 const createListing: ApiHandler = async (req, res) => {

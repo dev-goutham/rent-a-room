@@ -14,7 +14,7 @@ const Listing: NextPage<Props> = ({ listing, host }) => {
     <div className="pt-12 max-w-[1280px] mx-auto">
       <div className="justify-between lg:flex">
         <ListingDetails listing={listing} host={host} />
-        <ListingBookCta price={listing.price} />
+        <ListingBookCta price={listing.price} listingId={listing.id} />
       </div>
     </div>
   )

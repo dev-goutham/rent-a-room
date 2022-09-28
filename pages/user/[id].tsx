@@ -101,8 +101,8 @@ const User: NextPage<Props> = ({
       )}
       {bookings.length > 0 && (
         <div>
-          <h2 className="mb-4 text-xl font-semibold text-blue-800">Listings</h2>
-          <ListingCardsGrid listings={listings} />
+          <h2 className="mt-4 text-xl font-semibold text-blue-800">Bookings</h2>
+          <ListingCardsGrid listings={bookings} />
         </div>
       )}
     </div>
@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps<Props> = async (req) => {
       where: { id },
       include: {
         listings: true,
-        Booking: true,
+        // Booking: true,
       },
     })
     if (!user) {
@@ -139,7 +139,6 @@ export const getStaticProps: GetStaticProps<Props> = async (req) => {
         },
       },
     })
-
     return {
       props: {
         user,
