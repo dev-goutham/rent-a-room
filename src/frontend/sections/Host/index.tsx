@@ -67,6 +67,7 @@ const Host: React.FC = () => {
       router.push(`/listing/${result.data.listing.id}`)
     } catch (error) {
       reset()
+      setBase64Image(null)
       setIsSubmitDisabled(false)
       toast.error(
         "Something went wrong while creating this listing. Please try again",
@@ -201,7 +202,7 @@ const Host: React.FC = () => {
         />
         <div>
           <Required />
-          <label htmlFor="price">Price</label>
+          <label htmlFor="price">Price in cents</label>
           <input
             className="block rounded-md w-[100px] border-slate-300 focus:ring-blue-400 placeholder:text-slate-300"
             type="number"
@@ -211,7 +212,12 @@ const Host: React.FC = () => {
           />
           {errors.price && <FormError message={errors.price.message} />}
         </div>
-        <Button isDisabled={isSubmitDisabled} variant="fill" type="submit">
+        <Button
+          isDisabled={isSubmitDisabled}
+          fullSize
+          variant="fill"
+          type="submit"
+        >
           Submit
         </Button>
       </form>

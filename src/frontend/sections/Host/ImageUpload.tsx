@@ -35,19 +35,27 @@ const ImageUpload: React.FC<{
       <label htmlFor="image">
         <span>Image</span>
         {base64Image ? (
-          <div className="h-[108px] cursor-pointer w-[108px] p-[8px] border-[1px] flex justify-center items-center border-slate-300 border-dotted">
+          <div className="h-[108px] relative cursor-pointer w-[108px] p-[8px] border-[1px] flex justify-center items-center border-slate-300 border-dotted">
             <img className="inline-block w-full h-full" src={base64Image} />
+            <button
+              onClick={() => {
+                setBase64Image(null)
+              }}
+              className="absolute px-2 text-white bg-red-500 rounded-full -right-3 -top-3"
+            >
+              x
+            </button>
           </div>
         ) : (
           <>
-            <div className="h-[86px] cursor-pointer w-[86px] p-[8px] border-[1px] flex justify-center items-center border-slate-300 border-dotted">
+            <div className="h-[86px] cursor-pointer w-[86px] p-[8px] border-[1px] flex justify-center items-center border-slate-300 border-dotted relative">
               <div className="flex flex-col items-center text-slate-500">
                 <AiOutlineCloudUpload className="w-6 h-6" />
                 <span className="text-xs font-semibold lowercase">Upload</span>
               </div>
             </div>
             <input
-              className="opacity-0"
+              className="h-[1px] opacity-0"
               type="file"
               {...register("image")}
               id="image"
