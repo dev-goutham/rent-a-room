@@ -4,7 +4,7 @@ import Navbar from "../Navbar"
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="text-slate-600">
+    <div className="relative text-slate-600">
       <header className="relative mb-20">
         <Navbar />
       </header>
