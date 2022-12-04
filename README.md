@@ -21,15 +21,15 @@ Rent a room is a house renting app like Airbnb. Users can list their home and/or
 
 ## Built With
 
-- Language: Typescript
-- Framework: Next.js
-- Styling: Tailwindcss, Storybook
-- Api: Next-connect
-- Database: MongoDb
-- Authentication: Passport.js
-- From Handling: React-Hook-Form, Yup
-- Asset Storage: Cloudinary
-- Payment Management: Stripe
+- Language: `Typescript`
+- Framework: `Next.js`
+- Styling: `Tailwindcss`, `Storybook`
+- Api: `Next-connect`
+- Database: `MongoDb`
+- Authentication: `Passport.js`
+- From Handling: `React-Hook-Form`, `Yup`
+- Asset Storage: `Cloudinary`
+- Payment Management: `Stripe`
 
 ---
 
@@ -51,11 +51,11 @@ env variables required:
 
 To seed initial data
 
-`yarn seed`
+`yarn seed` or `npm run seed`
 
 To start up
 
-`yarn dev`
+`yarn dev` or `npm run dev`
 
 ---
 
