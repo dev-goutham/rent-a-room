@@ -1,31 +1,60 @@
-# Rent a room
+# Rent A Room
 
-## Tech stack
+## Table of Contents
 
-- Next.js
-- Typescript
-- tailwind
-- mongodb
-- react-query
+- [Overview](#overview)
+- [Built With](#built-with)
+- [Setup](#setup)
+- [Contact](#contact)
+
+---
+
+## Overview
+
+Rent a room is a house renting app like Airbnb. Users can list their home and/or rent other homes.
 
 ---
 
-### env variables required:
+## Built With
 
-```
-- DB_HOST
-- DB_USER
-- DB_PASSWORD
-- DB_NAME
-- DB_PORT
-```
+- Language: Typescript
+- Framework: Next.js
+- Styling: Tailwindcss, Storybook
+- Api: Next-connect
+- Database: MongoDb
+- Authentication: Passport.js
+- From Handling: React-Hook-Form, Yup
+- Asset Storage: Cloudinary
+- Payment Management: Stripe
 
 ---
+
+## Setup
+
+```
+env variables required:
+- DATABASE_URL
+- GOOGLE_CLIENT_ID
+- CLOUDINARY_KEY
+- CLOUDINARY_SECRET
+- CLOUDINARY_NAME
+- CLOUDINARY_URL
+- NEXT_PUBLIC_STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+- NEXT__PUBLIC_STRIPE_CLIENT_ID
+
+```
+
+To seed initial data
+
+`yarn seed`
 
 To start up
 
-`docker-compose up -d`
+`yarn dev`
 
-To shut down
+---
 
-`docker-compose down -v`
+# Contact
+
+[goutham-portfolio.netlify.app](https://goutham-portfolio.netlify.app)
